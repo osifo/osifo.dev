@@ -1,6 +1,0 @@
-#! /bin/sh
-
-USER=
-HOST=
-DIR=
-hugo && rsync -avz --delete public/ $USER@$HOST:$DIR
