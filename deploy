@@ -1,6 +1,6 @@
 #! /bin/sh
 
-USER=outside
-HOST=myoutside.co
-DIR=/var/www/blog/
+USER=
+HOST=
+DIR=
 hugo && rsync -avz --delete public/ $USER@$HOST:$DIR
