@@ -3,13 +3,14 @@ title: "Building an Elevator Twin - Setup"
 date: 2024-01-19T00:39:59+01:00
 draft: true # Set 'false' to publish
 tableOfContents: false # Enable/disable Table of Contents
-description: ''
+description: 'In this series of artiicles, I share my learnings as I build a digital elevator IoT sytem using EdgexFoundry.'
 categories:
-  - Sem categoria
+  - iot
+  - edgex
 tags:
-  -
+  - iot
+  - edgex
 ---
-
 
 In this multi-part series I'd be sharing about how I built a digital twin for elevators ussing open source technologies.
 

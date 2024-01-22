@@ -25,6 +25,6 @@ enableEmoji = true
     # reactionsEnabled = 1
     # emitMetadata = 0
     # inputPosition = "top"
-    # theme = "light"
+    # theme = "dark"
     # lang = "zh-CN"
     # lazyLoading = true
