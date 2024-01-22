@@ -39,8 +39,8 @@ I wished that I had documented my learnings and experiences. At the minimum, I'l
 
 So, this time, I decided to act. On one part because I have not experienced first-hand, the detriments of not documenting one's thoughts, and on the other hand, because I want to be more intentional about sharing knowledge.
 
-I've been doing some learning about EdgexFoundry and so far it's looking like the perfect tool for me to build great breakable toys (and who knows what else!). I'm looking forward to sharing my learnings on this as well.
+I've been doing some learning about EdgexFoundry and so far it's looking like the perfect tool for building great breakable toys (who knows what else!). I'm looking forward to sharing my learnings on this as well.
 
 
-Looking forward to a better writing year ahead!
+Cheers to a better writing year ahead!
 
