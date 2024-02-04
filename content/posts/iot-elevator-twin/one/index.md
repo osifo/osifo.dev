@@ -14,35 +14,36 @@ tags:
 ---
 
 This is the first of a multipart series. I would be sharing about an [interesting toy project](https://github.com/osifo/digital-elevator/) I'm working on - A digital twin for elevators using open source technologies.
-The IoT framework I'd be using for this project is [Edgex Foundry](https://www.edgexfoundry.org).
+The IoT framework I would be using for this project is [Edgex Foundry](https://www.edgexfoundry.org).
 
 ### Why Edgex Foundry.
-I chose edgex foundry for a number of reasons:
-- It is truly open source, with the [Apache (2.0) license](https://github.com/edgexfoundry/edgex-go/blob/main/LICENSE). This means it's scompletely free to use -  even for ocommercial purposes.
-- It is built with Go. For me, this is one more way to improve my proficiency in the language quickly.
-- It is microservice based. This allows for really modular development, so I don't need to worry much about [fragility](https://archive.blogs.harvard.edu/samuelgerges/antifragile-enterprise-microservices-architecture).
-- It is containerized. This makes running it on various OS specs quite seamlesss.
+I chose Edgex Foundry for a number of reasons:
+- It is truly open source; It uses the [Apache (2.0) license](https://github.com/edgexfoundry/edgex-go/blob/main/LICENSE). This means it is completely free to use - even for commercial purposes.
+- It is built with Go. For me, this is one more way to get better at the language quickly.
+- It is micro-service based. This allows for modular development, so I don't need to worry much about [fragility](https://archive.blogs.harvard.edu/samuelgerges/antifragile-enterprise-microservices-architecture).
+- It is containerized, this making running my solution on various OS/device specs quite seamless.
 
-### A little summary about EdgexFoundry (Edgex)
+### A little summary about Edgex Foundry (Edgex)
 
-Edgex is a vendor neutral, OS(and archicture)-agnostic and microservice-based opensource framework for the IoT edge. What this means is that it helps manage how our devices interact with  the real world (via sensors and acuators) as well as how this data is processed, stored and sometimes integrated with other edge or cloud-based technology, depending on the use-case. It is primarily writtten in Go and is being incubated by the Apache Software Foundation. [This article*](https://docs.edgexfoundry.org/3.1/) by the Edgex team, provides a more exhaustive introoduction than I could ever attempt. Also, just like I did, you can get lot of information to get you started from [the official Youtube channel](https://www.youtube.com/@edgexfoundry8766).
+Edgex is a vendor neutral, OS(and archicture)-agnostic and microservice-based open source framework for the IoT edge. What this means is that it helps manage how our devices interact with the real world (via sensors and acuators) as well as how this data is processed, stored and sometimes integrated with other edge or cloud-based technologies. It is primarily written in Go and is being incubated by the Apache Software Foundation. [This article*](https://docs.edgexfoundry.org/3.1/) by the Edgex team, provides a more exhaustive introoduction than I could ever attempt. Also, just like I did, you can very helpful information to get you started from [the official Youtube channel](https://www.youtube.com/@edgexfoundry8766).
 
 _P.S At the time of writing this article, the most recent stable version of Edgex is 3.1(Napa)_
 
-There are generally three categories of people that interact with Edgex, namely:
+There are generally three categories of people that interact with Edgex:
+
 - Users
-folks that use Edgex as-is and do not need or intend to make any modification/additions to the code base.
+Folks that use Edgex as-is and do not need or intend to make any modification/additions to the code base.
 
 - Developer / Contributor
 These are people that want to run, modify and build the existing edgex codebase, and in some cases, contribute their modificiations back to the Edgex open sosurce effort.
 
 - Hybrid
-These are the folks that run the main edgex services as-is, but also want to add add custom microservices that interact with the rest of Edgex. This describes me, in the context of this projec.
+This category of users often run the main edgex services as-is, however, they also add custom microservices that serve their business use case. These services interact with the rest of Edgex. This is the category I belong to (in the context of this project).
 
 ---
 
 ### About the Project
-_[Disclaimer] I'm working on this project primarily for learning purpose, as a result the product requirements might not exactly match a production usecase._
+_[Disclaimer] I'm working on this project primarily for learning purpose. As a result, the product requirements might not exactly match what obtains in a production use case._
 
 For this project, I fall into the category of EdgeX users known as Hybrid User (explain meaning and link to section of youtube video)
 In this article, I would focus on setting up and integrating my device service with the reset of Edgex.
