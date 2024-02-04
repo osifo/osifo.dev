@@ -31,13 +31,18 @@ _P.S At the time of writing this article, the most recent stable version of Edge
 
 There are generally three categories of people that interact with Edgex:
 
-- Users
+**Users**
+
 Folks that use Edgex as-is and do not need or intend to make any modification/additions to the code base.
 
-- Developer / Contributor
+
+**Developer / Contributor**
+
 These are people that want to run, modify and build the existing edgex codebase, and in some cases, contribute their modificiations back to the Edgex open sosurce effort.
 
-- Hybrid
+
+**Hybrid**
+
 This category of users often run the main edgex services as-is, however, they also add custom microservices that serve their business use case. These services interact with the rest of Edgex. This is the category I belong to (in the context of this project).
 
 ---
