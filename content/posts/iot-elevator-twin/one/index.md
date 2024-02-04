@@ -21,11 +21,11 @@ I chose Edgex Foundry for a number of reasons:
 - It is truly open source; It uses the [Apache (2.0) license](https://github.com/edgexfoundry/edgex-go/blob/main/LICENSE). This means it is completely free to use - even for commercial purposes.
 - It is built with Go. For me, this is one more way to get better at the language quickly.
 - It is micro-service based. This allows for modular development, so I don't need to worry much about [fragility](https://archive.blogs.harvard.edu/samuelgerges/antifragile-enterprise-microservices-architecture).
-- It is containerized, this making running my solution on various OS/device specs quite seamless.
+- It is containerized. As a result, running my solution on various OS/device specs quite seamless.
 
 ### A little summary about Edgex Foundry (Edgex)
 
-Edgex is a vendor neutral, OS(and archicture)-agnostic and microservice-based open source framework for the IoT edge. What this means is that it helps manage how our devices interact with the real world (via sensors and acuators) as well as how this data is processed, stored and sometimes integrated with other edge or cloud-based technologies. It is primarily written in Go and is being incubated by the Apache Software Foundation. [This article*](https://docs.edgexfoundry.org/3.1/) by the Edgex team, provides a more exhaustive introoduction than I could ever attempt. Also, just like I did, you can very helpful information to get you started from [the official Youtube channel](https://www.youtube.com/@edgexfoundry8766).
+Edgex is a vendor-neutral, OS anarchicture agnostic and microservice-based open source framework for the IoT edge. What this means is that it helps manage how our devices interact with the real world (via sensors and actuators) as well as how this data is processed, stored and sometimes integrated with other edge or cloud technologies. It is primarily written in Go and is being managed by the Apache Software Foundation. [This article*](https://docs.edgexfoundry.org/3.1/) by the Edgex team, provides a more exhaustive introoduction than I could ever attempt. Also, just like I did, you can very helpful information to get you started from [the official Youtube channel](https://www.youtube.com/@edgexfoundry8766).
 
 _P.S At the time of writing this article, the most recent stable version of Edgex is 3.1(Napa)_
 
