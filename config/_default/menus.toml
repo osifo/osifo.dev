@@ -25,19 +25,19 @@
 # Social Media Configuration
 
 [[social]]
-    identifier = "twitter"
-    name = "Twitter"
+    identifier = "linkedin"
+    name = "https://linkedin.com/in/anosikeosifo"
     url = "#"
     weight = 1
 
 [[social]]
-    identifier = "instagram"
-    name = "Instagram"
-    url = "#"
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/osifo"
     weight = 2
 
 [[social]]
-    identifier = "github"
-    name = "GitHub"
-    url = "#"
+    identifier = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/osifo__"
     weight = 3
