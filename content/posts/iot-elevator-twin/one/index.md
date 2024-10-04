@@ -42,11 +42,18 @@ These are the folks that run the main edgex services as-is, but also want to add
 ---
 
 ### About the Project
+<<<<<<< Updated upstream
 _[Disclaimer] I'm working on this project primarily for learning purpose, as a result the product requirements might not exactly match a production usecase._
 
 For this project, I fall into the category of EdgeX users known as Hybrid User (explain meaning and link to section of youtube video)
 In this article, I would focus on setting up and integrating my device service with the reset of Edgex.
 The plan is to build a custom [device service](https://docs.edgexfoundry.org/3.1/microservices/device/Ch-DeviceServices/) that interacts with the sensors and leverages on the other components of Edgex to process the data, and then expose the output via a custom [application service](https://docs.edgexfoundry.org/3.1/microservices/application/ApplicationServices/)
+=======
+_[Disclaimer] I'm working on this project primarily for learning purposes. As a result, the product requirements might not exactly match what obtains in production scenarios._
+
+In this article, I would focus on setting up and integrating my device service with the reset of EdgeX.
+The plan is to build a custom [device service](https://docs.edgexfoundry.org/3.1/microservices/device/Ch-DeviceServices/) that interacts with the sensors and leverages on the other components of EdgeX to process the data, and then expose the output via a custom [application service](https://docs.edgexfoundry.org/3.1/microservices/application/ApplicationServices).
+>>>>>>> Stashed changes
 
 
 ---
