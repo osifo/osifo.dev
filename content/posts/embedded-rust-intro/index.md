@@ -18,11 +18,11 @@ I went with Rust as the language of choice for a couple of reasons, mostly influ
 
 I found these books very helpful [for understanding the rust language](https://rust-book.cs.brown.edu/) as well as using it to [program embedded applications](https://www.theembeddedrustacean.com/c/ser-std).
 
-This article(s) documents my understanding of some embededded fundamentals, and could be viewed as an introduction to embedded rust programming using ESP32 (Although the referenced book uses the C3, I used S3, because that was the hardware I bought).
+This series documents my understanding of some embedded fundamentals, and could be viewed as an introduction to embedded rust programming using ESP32. (Although the referenced book uses the C3, I used S3, because that was the hardware I bought).
 
 ### Objective
-In this series of post ll be discussing the process of building a simplified version of the Whac-a-mole game.
-The goal is to measure human response time using timers. The game consists of:
+In this series of post I'll be discussing the process of building a simplified version of the Whac-a-mole game.
+The goal is to measure the player's response time using Timers. The game consists of:
 
 - 🔵 A Blue LED, representing the mole, which radonmly lights up.
   
@@ -30,8 +30,7 @@ The goal is to measure human response time using timers. The game consists of:
   
 - 🔴 A Red LED to indicate failure feedback, when the player didn't response or response was too slow.
 
-- 🟢 A Green LED that lights up if the player pressed the button quick enough.
-esses this in response to the blue led turning on.
+- 🟢 A Green LED that lights up if the player pressed the button quick enough, in response to the blue led turning on.
 
 Afer every round, the game is restarted.
 
@@ -58,7 +57,7 @@ Some preliminary steps need to be taken care of:
 #### Repo setup
 Now that we have that out of the way, we can begin with the project - I'll it `whacky`.
 
-First I need to setup the project repository, using [Cargo](https://doc.rust-lang.org/cargo/getting-started/first-steps.html) - Rust's package manager.
+First I need to setup the project repository using [Cargo](https://doc.rust-lang.org/cargo/getting-started/first-steps.html) - Rust's package manager.
 
 1. I'll be using express-if's template for generating embedded rust projects.
  
