@@ -24,7 +24,7 @@ This counterparty could be a trader, an algorithm, an institution or a market ma
 The job of the market makers, as against what's commoonly touted, is toe stay delta neutral, and capture the spread betweek bid and ask -  where delta refers to the directional bias towards the underlying asset.
 
 
-What moves the markets?
+### What moves the markets?
 
 Markets are moved based on supply and demand dynamics, when buyers ane sellers agree on fair prices, the markets are in equilibrum - i.e they range.
 When there is an imbalance between supply and demand, markets trend.
@@ -80,5 +80,12 @@ When large traders (insitutions, hedge funds, etc) enter a position in the marke
 
 Hence order splitting, which results in multiple trades placed by same entity, with same objective in mind, causing the market to move in that direction.
 
-A good way to tell the potential direction is by studying the asset's [volume profile](https://tradingriot.com/volume-profile).
+A good way to tell the potential direction of the market is by studying the asset's [volume profile](https://tradingriot.com/volume-profile).
+
+
+### Bid, Ask & Spread
+
+The markets work in the form of an open auction, i,e for every buyer, there has to be a seller, and vice versa.
+Traders willing to buy or sell asssets place their orders in the order book. These resting (yet-to-be-executed orders) is what is called LIQUIDITY,
+A *_liquiidty maker_* is a trader who places a limit order (for execution at a future price), while a *_liquidity taker_* is one who places an order (market order) for immediate execution.
 

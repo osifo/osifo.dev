@@ -6,7 +6,7 @@ theme = 'lowkey'
 title = 'My learnings, thoughts and perspectives'
 enableRobotsTXT = true
 summaryLength = 15
-paginate = 5
+pagination.pagerSize = 5
 
 
 [markup]
