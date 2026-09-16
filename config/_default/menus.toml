@@ -7,7 +7,7 @@
 [[main]]
     identifier = "about"
     name = "About me"
-    url = "/about"
+    url = "#"
     weight = 2
 
 [[main]]
@@ -26,8 +26,8 @@
 
 [[social]]
     identifier = "linkedin"
-    name = "https://linkedin.com/in/anosikeosifo"
-    url = "#"
+    name = "Linkedin"
+    url = "https://linkedin.com/in/anosikeosifo"
     weight = 1
 
 [[social]]
