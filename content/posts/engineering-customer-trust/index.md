@@ -44,7 +44,7 @@ As a primer, the articles linked below give a great introduction to some of the 
 
 ---
 
-### 1. What we're solving for
+### 1. What Are We Solving For?
 
 In the context of this domain, review ratings (stars) behave like product attributes. They sit next to price and availability on the product card, they appear on listing pages where dozens of products render at once. They can be sorted, filtered and searched like any other facet. 
 
@@ -56,7 +56,7 @@ The goal is to own this review data in order to enable these capabilities, while
 {{< img src="images/architecture-diagram.png" alt="architecture diagram" caption="service components are hosted on AWS cloud">}} 
 
 
-### 2. The backbone at a glance
+### 2. The Backbone at a Glance
 
 As seen in the above diagram, three Lambda runtimes share one codebase. 
 - An **HTTP** lambda receives webhooks and admin calls
@@ -92,14 +92,14 @@ A **Worker Lambda** drains the queue. It uses the representative variant data to
 > 
 > _A single Lambda looping over every product (there are over 50k of those per store) would press against the 15-minute ceiling. Fanning the deduplicated units onto SQS makes each independently retryable, with a DLQ and natural back-pressure. SQS was the best fit as we didn't need Kinesis for ordered, replayable streams nor EventBridge's multi-consumer capabilities._
 
-### 6. Delivery semantics & idempotency
+### 6. Delivery Semantics & Idempotency
 
 The reviews provider delivers webhooks **at-least-once**; a timeout or non-200 triggers redelivery. This matches with the at-least-once product in SQS. Should the same review update be seen more than once, the two layers of deduplication clean that up.
 
 At intake, duplicate deliveries for a variant collapse into the **Redis Set**. At cron time, variants collapse again into **one entry per product**. This shrinks every redelivered / overlapping webhooks into one data point per reviewed product.
 
 
-### 7. Persistence & the data model
+### 7. Persistence & The Data Model
 Two things live in **DynamoDB**: the variant→product mapping the cron uses to roll variants up to their parent, and the product-level reviews summary data.
 
 The processing state lives entirely in Redis: the intake set, the rotated processing set (at cron trigger time, the intake set data is emptied into the processing set, ensuring that new review data are captured for the next sync cycle), and a per-store metadata record marking each store's processing state. Maintaining this transient bookkeeping data out of DynamoDB ensures that our system of record holds only durable facts.
@@ -109,7 +109,7 @@ The processing state lives entirely in Redis: the intake set, the rotated proces
 > _The access pattern is known and narrow: look up a product by store and key. DynamoDB gives single-digit-ms read times for the future read path and scales with Lambda concurrency without needing a connection pool to exhaust. Also, billing is per request, much better than having a long-running instance._
 
 
-### The spine: Trace one review update
+#### The Spine: Trace one review update
 
 {{< img src="images/review_update_pipeline_schematic.png" alt="review data flow">}} 
 
@@ -119,7 +119,9 @@ The processing state lives entirely in Redis: the intake set, the rotated proces
 4. Each product unit is fanned out over SQS; a worker fetches that reviews summary from the reviews provider using the representative variant.
 5. The reviews summary data is written to DynamoDB at product + store level; Redis metadata marks the cycle complete once processing for each store is completed.
 
-### 8. Resilience, blast radius & graceful degradation
+
+### 8. Resilience, Blast Radius & Graceful Degradation
+
 To address these, I implemented the following:
 1. 3rd-Party auth tokens are cached in Redis to minimize re-authentication calls.
 2. Requests to external services are implemented using retry with backoff.
@@ -129,12 +131,13 @@ To address these, I implemented the following:
 Taken together, these safeguards mean that should the reviews provider be unavailable for whatever reason, the worst outcome is a slightly delayed refresh, not a wrong or missing rating on the page. This predictability is key to keeping the trust intact when customers need those stars to make up their mind about a product.
 
 
-### 9. Observability across async hops
+### 9. Observability Across Async Hops
+
 Given the design of this system, a single logical operation crosses multiple process boundaries: HTTP Lambda, SQS, cron and then a worker lambda. For optimal observability, a **correlation id** is generated at intake time. Leveraging on Node's Async Local Storage (ALS), this gets propagated across the service components. This way one webhook can be traced all the way to its final review summary write into DynamoDB.
 Without this, the tracing would have hit dead-end, and observability data would be unreliable.
 
 
-### 10. Closing thoughts
+### 10. Closing Thoughts
 
 Keeping review ratings accurate and current came down to a few deliberate choices: two layers of deduplication that turn a noisy webhook stream into one unit of work per product, SQS fan-out that makes each unit independently retryable, and a correlation id that lets us trace any update end to end. 
 
