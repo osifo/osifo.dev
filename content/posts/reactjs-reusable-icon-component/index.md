@@ -24,20 +24,20 @@ Below, I describe the implementation steps:
 <!--more-->
 
 ### 1. Export SVG path(s) for each icon as an array of Strings.
-{% highlight text %}
+```
 //constants.js
 
 export const ICON_ARROW_DOWN = ['M316 334l196 196 196-196 60 60-256 256-256-256z'];
 
 export const ICON_CANCEL = ['M69.7 68.3c.925.927-.458 2.343-1.4 1.4L50 51.4 31.7 69.7c-.938.938-2.326-.474-1.4-1.4L48.6 50 30.3 31.7c-.932-.933.468-2.332 1.4-1.4L50 48.6l18.3-18.3c.933-.932 2.331.467 1.4 1.4L51.4 50l18.3 18.3z'];
 
-{% endhighlight %}
+```
 - *Note: For more complex Icons, the paths array would usually consist of more than one element.*
 
 ### 2. We begin building the Icon Component.
 For easily reusability, we'll build our Icon component as a stateless(dumb) react component.
 The purpose is to allow for more configurability(via props) from its host component.
-{% highlight text %}
+```
 //Icon.js
 
 import React, { PropTypes } from 'react';
@@ -58,12 +58,12 @@ Icon.defaultProps = {
 //return Icon as the default export from this file
 export default Icon;
 
-{% endhighlight %}
+```
 
 
 ### 3. Specify proptypes for the Icon component
 We'll start by specifying the data-types of the props we're expecting.
-{% highlight text %}
+```
 
 Icon.propTypes = {
   paths: PropTypes.array.isRequired,
@@ -73,11 +73,11 @@ Icon.propTypes = {
   scaleTo: PropTypes.number,
 };
 
-{% endhighlight %}
+```
 
 As you would have noticed, the only required props is `paths`. For other essential attributes, we'll fall back to default values in case no values are specified.
 
-{% highlight text %}
+```
 
 Icon.defaultProps = {
   size: 24,
@@ -85,11 +85,11 @@ Icon.defaultProps = {
   color: '#555',
 };
 
-{% endhighlight %}
+```
 
 
 Here's what our Icon.js file should look like:
-{% highlight text %}
+```
 //Icon.js
 
 import React, { PropTypes } from 'react';
@@ -113,25 +113,25 @@ Icon.defaultProps = {
 };
 
 export default Icon;
-{% endhighlight %}
+```
 
 
 ### 4. Map values in props to Icon attributes.
 While SVGs can be used to achieve reasonable complex vectors, for some apps(and for my use-case), SVG-based Icons usually take a shape not too far from this:
 
-{% highlight text %}
+```
 <svg class="icon" height="" width="" viewBox="" style="">
   <g fill="" transform="">
     <path d=""></path>
   </g>
 </svg>
-{% endhighlight %}
+```
 
 Because our objective for the Icon component is *ease of reusability*, specifying these attributes as variables(set using props) is the way to go.
 
 Some props would be used directly as attributes of the SVG components, In other cases we'll compose the attributes values from passed props:
 
-{% highlight text %}
+```
 
 const Icon = (props) => {
   const styles = {
@@ -151,7 +151,7 @@ const Icon = (props) => {
   );
 };
 
-{% endhighlight %}
+```
 
 
 ### 5. Building out the SVG structure.
@@ -159,17 +159,17 @@ We've specified our props as well as other necessary attributes to be used in ou
 Now let's use those in constructing the SVG.
 i.e We'll be putting some flesh to this:
 
-{% highlight text %}
+```
 <svg class="icon" height="" width="" viewBox="" style="">
   <g fill="" transform="">
     <path d=""></path>
   </g>
 </svg>
-{% endhighlight %}
+```
 
 In the Icon.js file, we set the attributes for the SVG element above:
 
-{% highlight text %}
+```
 //Icon.js
 
 const Icon = (props) => {
@@ -191,7 +191,7 @@ return(
 .
 .
 
-{% endhighlight %}
+```
 
 
 ### 5. Constructing the SVG paths.
@@ -202,7 +202,7 @@ We'll wrap that in a function a function that returns the array of paths we need
 
 Here's what the SVG would look:
 
-{% highlight text %}
+```
 
 <svg className='icon' style={ styles.svg } height={`${props.size}px`} width={`${props.size}px`} viewBox={ `0 0 ${ props.viewBox } ${ props.viewBox }` }>
   <g fill={ styles.g.fill } transform={ ( props.scaleTo ? `scale(${ styles.g.scale }, ${ styles.g.scale })` : '') }>
@@ -210,12 +210,12 @@ Here's what the SVG would look:
   </g>
 </svg>
 
-{% endhighlight %}
+```
 
 
 Our path building function - buildSVGPaths - takes as a parameter, the paths array passed in as props to the component. We'll make use of this to draw out the paths that form the icon to be built.
 
-{% highlight text %}
+```
 
 const buildSVGPaths = (iconPaths) => {
   let key = 0;
@@ -225,7 +225,7 @@ const buildSVGPaths = (iconPaths) => {
   });
 };
 
-{% endhighlight %}
+```
 
 What we just did is really simple:
 We map on the metthods argument(an arry) to build out `path` elements, which we return. So this  function would be returning an array of `paths`, which we interpolate into the JSX above to achieve a configurable SVG-based Icon component!
@@ -233,7 +233,7 @@ We map on the metthods argument(an arry) to build out `path` elements, which we 
 Our completed Icon.js file should look like this:
 
 
-{% highlight text %}
+```
 //Icon.js Completed version.
 
 import React, { PropTypes } from 'react';
@@ -284,14 +284,14 @@ Icon.defaultProps = {
 
 export default Icon;
 
-{% endhighlight %}
+```
 
 
 ### Using the Icon component we just built.
 
 The icon component can now easily be imported into any client code and used thus:
 
-{% highlight text %}
+```
 //some other component
 import Icon from '<path_to_icon_component>';
 import { ICON_FOLLOWERS } from '<path_to_constants>';
@@ -306,7 +306,7 @@ import { ICON_FOLLOWERS } from '<path_to_constants>';
 .
 .
 
-{% endhighlight %}
+```
 
 There are free SVG icons sets on the internet for use, however some of the really good ones require attribution. **Its important we adhere to these**.
 

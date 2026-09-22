@@ -19,7 +19,7 @@ Promises are a Javascript pattern for the delivery of the result of an asynchron
 
 Below is a basic example of a Promise implementation:
     <!--more-->
-{% highlight text %}
+```
 const asyncFunc = (someArgs) => {
   return new Promise((resolve, reject) => {
     //some code
@@ -31,10 +31,10 @@ const asyncFunc = (someArgs) => {
     }
   }
 }
-{% endhighlight %}
+```
 
 We can then invoke the above like this:
-{% highlight text %}
+```
 asyncFunc()
   .then((result) => {
     //some code
@@ -46,7 +46,7 @@ asyncFunc()
   .catch((error) => {
     //handle error here
   });
-{% endhighlight %}
+```
 
 
 ## Chaining Promises.
@@ -61,7 +61,7 @@ To achieve chaining, we can resolve Q by:
 
 If we resolve Q with a normal value, we can pick this value up via a subsequent then(), as in:
 
-{% highlight text %}
+```
 p.then((returnedData) => {
   //Q here
   return 'testvalue';
@@ -69,11 +69,11 @@ p.then((returnedData) => {
 .then((val) => {
   console.log(val); // ouput=> 'testvalue'
 });
-{% endhighlight %}
+```
 
 We can also resolve Q with a thenable - any object that has a then() function, that behaves like ***Promise.pototype.then()***. If we return a thenable from inside Q, we forward Q's resolution to the next chain (we'll call it 'R'). We'll have a chain that looks like this:
 
-{% highlight text %}
+```
 p.then((returnedData) => {
   //Q here
   return thenableX()
@@ -82,7 +82,7 @@ p.then((returnedData) => {
   //sample code
   ...
 });
-{% endhighlight %}
+```
 
 **Note:** Its important to note here that any error that occurs within the then() methods in a Promise chain are passed on to the error handler (the catch block) if there is one.
 
@@ -90,17 +90,17 @@ p.then((returnedData) => {
 When asynchronous functions are chained via the then() construct (as sited in the previous example), they are executed sequentially (i.e one after the other).
 However, there are use-cases when we need the async functions to run in parallel, i.e:
 
-{% highlight text %}
+```
 asyncFunc1();
 asyncFunc2();
-{% endhighlight %}
+```
 
 ### Promise.all
 With [Promise.all()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), we get notified once all the specified async functions return have returned respective results.
 
 Promise.all takes an array of promises as argument and returns a single promise that is fulfilled with an array of the results of each specified promise, i.e:
 
-{% highlight text %}
+```
 Promise.all([
   asyncFunc1(),
   asyncFunc2(),
@@ -111,13 +111,13 @@ Promise.all([
 .catch((error) => {
   ...
 });
-{% endhighlight %}
+```
 
 ### Promise.race
 [Promise.race()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise/race) takes an iterable of promises, and returns a promise that resolves or rejects as soon as any of the promises in the iteralbe resolves or rejects.
 
 It'll look somewhat like this:
-{% highlight text %}
+```
 Promise.race([
   asyncFunc1(),
   asyncFunc2(),
@@ -128,7 +128,7 @@ Promise.race([
 .catch((error) => {
   ...
 });
-{% endhighlight %}
+```
 
 ## Promise States
 A Promise can exist in one of the following three mutually exclusive states.
@@ -154,7 +154,7 @@ With Promises, there is no inversion of control. i.e Promise-based functions ret
 #### Escaping the callback-hell
 With Promises, chaining of async code is possible, as compared to nesting when using callbacks. When the return value of the async code is a thenable*(TODO::Bolden), the then() function can then be used to chain more async code, for example:
 
-{% highlight text %}
+```
 asyncFunc()
   .then((result) => {
     //some code
@@ -162,7 +162,7 @@ asyncFunc()
   .catch((error) => {
     //handle error here
   });
-{% endhighlight %}
+```
 
 #### Error Handling
 With promises, errors and exceptions are handled in a more IoC manner - they are passed down till a catch() block is reached in the Promise chain.
@@ -175,7 +175,7 @@ Promises are operated from both a Producer and Consumer perspective.
 ### Creating a Promise
 As a producer, a promise is created and its result set via:
 
-{% highlight text %}
+```
 return new Promise((resolve, reject) => {
   //some code
   if(condiition) {
@@ -185,7 +185,7 @@ return new Promise((resolve, reject) => {
     reject(error)
   }
 }
-{% endhighlight %}
+```
 
 In the code-block above, the parameter to the Promise constructor us called an executor(TODO:Bolden). If an exception is thrown with this executor, the promise transits into a rejected state.
 
@@ -194,24 +194,24 @@ Other ways of creating Promise include:
 #### Promise.resolve()
 This creates an immediately Fulfilled promise, e.g:
 
-{% highlight text %}
+```
 Promise.resolve(x)
   .then((val) => {
     console.log(val); //x
   });
-{% endhighlight %}
+```
 
 Note: In the code above, if x is a thenable, it is returned unchanged and is settled in the succeeding then().
 
 #### Promise.reject()
 This creates an immediately rejected promise.
 
-{% highlight text %}
+```
 Promise.reject(error)
   .catch((val) => {
     console.log(val); //x
   });
-{% endhighlight %}
+```
 
 ### Consuming a Promise
 Code that consumers a promise its notified about its state transitions via reactions: Pending -> Rejected / Pending -> Fulfilled (as we described earlier).
@@ -224,7 +224,7 @@ Truthfully, I had started implementing promises in my projects before i read the
 
 #### 1. Loosing the tail of a promise chain
 
-{% highlight text %}
+```
 #### BAD
 function incorrect() {
   const myPromise = P; //where P is a thenable
@@ -234,9 +234,9 @@ function incorrect() {
 
   return myPromise; //the value from the method chained to `myPromise` is never returned
 }
-{% endhighlight %}
+```
 
-{% highlight text %}
+```
 #### GOOD
 function correct() {
   const myPromise = P; //where P is a thenable
@@ -245,9 +245,9 @@ function correct() {
   });
   //this way, the tail of myPromise's chain is returned upon resolution or rejection.
 }
-{% endhighlight %}
+```
 
-{% highlight text %}
+```
 #### BEST
 function correct() {
   //we dont actually need to store the promise in a variable
@@ -256,11 +256,11 @@ function correct() {
   });
   //this way, the tail of myPromise's chain is returned upon resolution or rejection.
 }
-{% endhighlight %}
+```
 
 #### 2. Creating Promises instead of chaining
 
-{% highlight text %}
+```
 #### BAD
 const doSomething = () => {
   return new Promise(function(resolve, reject) {
@@ -273,9 +273,9 @@ const doSomething = () => {
       });
   });
 };
-{% endhighlight %}
+```
 
-{% highlight text %}
+```
 #### GOOD
 const doSomething = () => {
   return fetch('http://www.google.com')
@@ -283,11 +283,11 @@ const doSomething = () => {
       return successResponse;
     });
 };
-{% endhighlight %}
+```
 
 #### 3. Using then() for error handling
 
-{% highlight text %}
+```
 #### BAD
 doSomethingAsync()
   .then(
@@ -300,14 +300,14 @@ doSomethingAsync()
       //handle error
     }
   );
-{% endhighlight %}
+```
 
 This approach is wrong because there are a number of exception cases that aren't handled:
 - Rejections created by the fulfillment callback in the code-block starting at (A)
 - Exceptions thrown during execution of method at (B)
 - Rejection due to execution of async code at (C)
 
-{% highlight text %}
+```
 #### GOOD
   doSomethingAsync()
     .then(
@@ -319,7 +319,7 @@ This approach is wrong because there are a number of exception cases that aren't
       .catch((error) => {
         //handle error
       });
-{% endhighlight %}
+```
 
 
 I hope i've been able to shed some light on how to use ES6 promises. In the Part 2 of this article, we'll discuss some advanced Promise concepts such as:
