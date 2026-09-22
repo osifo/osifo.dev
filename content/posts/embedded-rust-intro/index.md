@@ -5,7 +5,8 @@ draft: false # Set 'false' to publish
 tableOfContents: false # Enable/disable Table of Contents
 description: ''
 categories:
-  - iot
+  - Tech
+  - Internet of Things
   - rust
   - embedded
 tags:

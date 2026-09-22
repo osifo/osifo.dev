@@ -6,8 +6,9 @@ tableOfContents: false # Enable/disable Table of Contents
 description: ''
 categories:
   - Bitcoin
+  - Tech
 tags:
-  -
+  - Bitcoin
 ---
 
 A bitcoin is made up of fields, each contaning bytes of data. Every bitcoin has the same basic structure. 

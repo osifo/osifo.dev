@@ -5,12 +5,11 @@ draft: false # Set 'false' to publish
 tableOfContents: false # Enable/disable Table of Contents
 description: 'In this series of artiicles, I share my learnings as I build a digital elevator IoT sytem using EdgexFoundry.'
 categories:
-  - iot
-  - edgex
+  - Tech
+  - Internet of Things
 tags:
   - iot
   - edgex
-  - edgexfoundry
 ---
 
 This is the first of a multipart series. I would be sharing about an [interesting toy project](https://github.com/osifo/digital-elevator/) I'm working on - A digital twin for elevators using open source technologies.

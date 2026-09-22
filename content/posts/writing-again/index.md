@@ -5,9 +5,9 @@ draft: false # Set 'false' to publish
 tableOfContents: false # Enable/disable Table of Contents
 description: "I realized that documenting my learnings is way more valuable than I'd thought it to be. So, here's me committing to it iin 2024."
 categories:
-  - ramblings
+  - Personal
 tags:
-  - ramblings
+  - writing
 ---
 
 > I realized that documenting my learnings is way more valuable than I had thought it to be. So, here's me committing to it in 2024.
